@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FormControl, FormGroup, ControlLabel, HelpBlock} from 'react-bootstrap';
+import {FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 import './css/textbox.css';
 
 class Textbox extends Component {
@@ -21,20 +21,13 @@ class Textbox extends Component {
     this.setState({ value: e.target.value });
   }
 
-  showHebrewInput() {
-
-  }
-
-
-
-
   render() {
     return (
       <form>
         <FormGroup
           // validationState={this.getValidationState()}
           >
-          <ControlLabel onClick={this.showHebrewInput.bind(this)}><a href="javascript:void()">Need a Hebrew input?</a></ControlLabel>
+          <ControlLabel><a id="showHebrew">Need a Hebrew input?</a></ControlLabel>
           <FormControl
             id="hebrewForm"
             type="text"
@@ -43,7 +36,6 @@ class Textbox extends Component {
             onChange={this.handleChange.bind(this)}
           />
           <FormControl.Feedback />
-          //{ <HelpBlock>Validation is based on string length.</HelpBlock>}
         </FormGroup>
       </form>
     )

@@ -1,3 +1,8 @@
 .hebrewLetter {
   font-size: 18px;
 }
+
+.gematriaPanel:hover {
+  background-color: #f0ad4e;
+  transition: ease 0.6s
+}
