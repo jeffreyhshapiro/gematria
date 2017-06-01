@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Grid, Col, Row} from 'react-bootstrap';
+import {Grid, Col, Row, Container} from 'react-bootstrap';
 import Gematria from './gematria.jsx';
 import Textbox from './textbox.jsx';
 let letters = [];
@@ -28,7 +28,7 @@ class Input extends Component {
       <div id="input">
           <Grid>
             <Row>
-              <Col md={6} mdPush={3}>
+              <Col md={6} sm={6} xs={12} mdPush={3} smPush={3}>
                 <Textbox setLetter={this.state.hebrewLetter} />
               </Col>
             </Row>

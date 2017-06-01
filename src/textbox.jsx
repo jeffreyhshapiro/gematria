@@ -4,12 +4,6 @@ import './css/textbox.css';
 
 class Textbox extends Component {
 
-  // getInitialState() {
-  //   return {
-  //     value: ''
-  //   };
-  // }
-
   // getValidationState() {
   //   const length = this.state.value.length;
   //   if (length > 10) return 'success';

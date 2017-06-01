@@ -15,12 +15,12 @@ class Gematria extends Component {
         {
           gematriaValues.map((val, i) => {
             return  <OverlayTrigger placement="top" overlay={<Tooltip id={val.name}>{val.name}</Tooltip>} key={i} onClick={this.props.getLetter.bind(this, val)}>
-                      <Col md={2} className="pull-right">
+                      <Col md={2} sm={2} xs={4} className="pull-right">
                         <Panel className="gematriaPanel" >
                           <div className="pull-right hebrewLetter">
                             {val.letter}
                           </div>
-                          <div>
+                          <div className="pull-left">
                             {val.gematria}
                           </div>
                         </Panel>
