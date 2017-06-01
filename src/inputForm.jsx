@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Grid, Col, Row, Container} from 'react-bootstrap';
+import {Grid, Col, Row} from 'react-bootstrap';
 import Gematria from './gematria.jsx';
 import Textbox from './textbox.jsx';
-let letters = [];
+let phrase = "";
 
 class Input extends Component {
   constructor(props) {
@@ -16,11 +16,11 @@ class Input extends Component {
   }
 
   letterToTextbox(val) {
-    letters.push(val.letter);
-    let phrase = letters.join('');
+    let letter = val.letter;
+    phrase += letter;
     this.setState({
       hebrewLetter: phrase
-    })
+    });
   }
 
   render() {
