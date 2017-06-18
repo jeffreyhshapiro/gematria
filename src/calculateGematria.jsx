@@ -13,16 +13,22 @@ class Calculator extends Component {
         this.calculateValue = this.calculateValue.bind(this);
     }
 
-    calculateValue() {
-        let phraseArr = this.props.calculatePhrase.split('');
+    componentWillReceiveProps(nextProps){
+        this.calculateValue(nextProps)
+    }
+
+    calculateValue(nextProps) {
+        let phraseArr = nextProps.calculatePhrase.split('');
         let total = 0;
-        phraseArr.forEach(function(letter) {
+
+        phraseArr.forEach((letter) => {
             gematriaValues.find((target) => {
-                if (letter === target.letter) {
+                if(letter === target.letter) {
                     return total += parseInt(target.gematria)
                 }
             });
-        }, this);
+        });
+
         this.setState({
             gematriaValue: total
         });
@@ -31,17 +37,17 @@ class Calculator extends Component {
     render() {
         return (
             <section id="calculate-phrase">
-                <Col sm={6} md={6}>
-                    Value
-                    <div>
-                        {this.calculateValue()}
-                    </div>
+                <Col sm={6} md={6} className="header"> 
+                    <h2>Value</h2>
+                    <h2>
+                        {this.state.gematriaValue}
+                    </h2>
                 </Col>
                 <Col sm={6} md={6} className='pull-right'>
-                    Word
-                    <div>
+                    <h2>Word</h2>
+                    <h2>
                         {this.props.calculatePhrase}
-                    </div>
+                    </h2>
                 </Col>
             </section>
         )
