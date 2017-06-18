@@ -3,6 +3,13 @@ import {FormControl, FormGroup, ControlLabel} from 'react-bootstrap';
 import './css/textbox.css';
 
 class Textbox extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      value: ""
+    }
+  }
 
   // getValidationState() {
   //   const length = this.state.value.length;
@@ -11,9 +18,8 @@ class Textbox extends Component {
   //   else if (length > 0) return 'error';
   // }
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
+
+
 
   render() {
     return (
@@ -25,9 +31,8 @@ class Textbox extends Component {
           <FormControl
             id="hebrewForm"
             type="text"
-            value={this.props.setLetter}
             placeholder="Enter text"
-            onChange={this.handleChange.bind(this)}
+            onChange={this.props.getPhrase.bind(this)}
           />
           <FormControl.Feedback />
         </FormGroup>
