@@ -27,13 +27,17 @@ class Textbox extends Component {
         <FormGroup
           // validationState={this.getValidationState()}
           >
-          <ControlLabel><a id="showHebrew">Need a Hebrew input?</a></ControlLabel>
-          <FormControl
+          <ControlLabel>
+            <a id="showHebrew" onClick={this.props.toggleHebrew.bind(this)}>
+              {!this.props.hebrewState ? 'Need a Hebrew input?' : 'Prefer to copy and paste a Hebrew phrase?'}
+            </a>
+          </ControlLabel>
+          {!this.props.hebrewState ?  <FormControl
             id="hebrewForm"
             type="text"
             placeholder="Enter text"
             onChange={this.props.getPhrase.bind(this)}
-          />
+          /> : null}
           <FormControl.Feedback />
         </FormGroup>
       </form>

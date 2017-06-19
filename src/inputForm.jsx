@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Grid, Col, Row} from 'react-bootstrap';
-// import Gematria from './gematria.jsx';
+import Gematria from './gematria.jsx';
 import Textbox from './textbox.jsx';
 import Calculator from './calculateGematria.jsx';
+let phrase = "";
 
 class Input extends Component {
   constructor(props) {
@@ -10,24 +11,35 @@ class Input extends Component {
 
     this.state = {
       hebrewLetter: "",
-      kidoshin: ""
+      kidoshin: "",
+      showHebrew: false
     }
 
     this.letterToParent = this.letterToParent.bind(this);
     this.constructWord = this.constructWord.bind(this);
+    this.hebrewInput = this.hebrewInput.bind(this);
   }
 
   letterToParent(val) {
-    this.setState({
-      hebrewLetter: val.letter
-    });
-    this.constructWord();
+    this.constructWord(val);
   }
 
   constructWord(e) {
-    const phrase = e.target.value
+    
+    if(!e.target) {
+      phrase += e.letter;
+    } else {
+      phrase = e.target.value;
+    }
+
     this.setState({
       kidoshin: phrase
+    })
+  }
+
+  hebrewInput() {
+    this.setState({
+      showHebrew: !this.state.showHebrew
     })
   }
 
@@ -37,15 +49,13 @@ class Input extends Component {
           <Grid>
             <Row>
               <Col md={6} sm={6} xs={12} mdPush={3} smPush={3}>
-                <Textbox getPhrase={this.constructWord} />
+                <Textbox getPhrase={this.constructWord} 
+                         toggleHebrew={this.hebrewInput}
+                         hebrewState={this.state.showHebrew}
+                />
               </Col>
             </Row>
           </Grid>
-          {/*<Grid>
-            <Row>
-              <Gematria getLetter={this.letterToParent} />
-            </Row>
-          </Grid>*/}
           <Grid>
             <Row>
               <Col md={6} sm={6} xs={12} mdPush={3} smPush={3}>
@@ -53,7 +63,11 @@ class Input extends Component {
               </Col>
             </Row>
           </Grid>
-
+          <Grid>
+            <Row>
+               {this.state.showHebrew ? <Gematria getLetter={this.letterToParent} /> : null}
+            </Row>
+          </Grid>
       </div>
     )
   }

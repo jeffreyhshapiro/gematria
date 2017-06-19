@@ -10,22 +10,17 @@ class Gematria extends Component {
 
   render() {
 
-    console.log(this.props);
-
     return(
       <div id="alephBet">
         <Grid>
           <Row>
         {
           gematriaValues.map((val, i) => {
-            return  <OverlayTrigger placement="top" overlay={<Tooltip id={val.name}>{val.name}</Tooltip>} key={i}>
-                      <Col lg={2} md={2} sm={2} xs={4} className="pull-right">
+            return  <OverlayTrigger placement="top" overlay={<Tooltip id={val.name}>{val.name} {val.gematria}</Tooltip>} key={i}>
+                      <Col lg={1} md={1} sm={1} xs={2} className="pull-right">
                         <Panel className="gematriaPanel" onClick={this.props.getLetter.bind(this, val)} >
-                          <div className="pull-right hebrewLetter">
+                          <div className="text-center hebrewLetter">
                             {val.letter}
-                          </div>
-                          <div className="pull-left">
-                            {val.gematria}
                           </div>
                         </Panel>
                       </Col>
