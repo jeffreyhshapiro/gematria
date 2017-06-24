@@ -25,9 +25,16 @@ class Input extends Component {
   }
 
   constructWord(e) {
-    
+    console.log(e)
     if(!e.target) {
-      phrase += e.letter;
+      //TODO make this better
+
+      if(e.letter === "Clear") {
+        phrase = "";
+      } else {
+        phrase += e.letter;
+      }
+
     } else {
       phrase = e.target.value;
     }
